@@ -1,0 +1,45 @@
+{
+  "Utilisateur" : [ {
+    "Prenom" : "benjamin",
+    "Email" : "benjamin.bouillot@live.fr",
+    "Login" : "benio",
+    "Nom" : "Bouillot",
+    "Password" : "mdp@73.fr"
+  }, {
+    "Prenom" : "Yves",
+    "Email" : "fontaine312@gmail.com",
+    "Login" : "yvesftn",
+    "Nom" : "Fontaine",
+    "Password" : "ftn.312?"
+  }, {
+    "Prenom" : "Seif",
+    "Email" : "boubaker.seif@gmail.com",
+    "Login" : "seif_bouba",
+    "Nom" : "bouBaKer",
+    "Password" : "bouba_ker.seif"
+  }, {
+    "Prenom" : "tom",
+    "Email" : "tomir119@gmail.com",
+    "Login" : "tom_tom_pouce",
+    "Nom" : "barthelemy",
+    "Password" : "mdp_tom.barth"
+  }, {
+    "Prenom" : "Roger",
+    "Email" : "rsolivier@gmail.fr",
+    "Login" : "rogeur",
+    "Nom" : "sirito-olivier",
+    "Password" : "siri38Rogeur"
+  }, {
+    "Prenom" : "pablo",
+    "Email" : "pablo.godont@wanadoo.fr",
+    "Login" : "pab_godont",
+    "Nom" : "godont",
+    "Password" : "godorsh_38"
+  }, {
+    "Prenom" : "ELHADJ",
+    "Email" : "elhadj.bah@gmail.com",
+    "Login" : "elhadj.bah",
+    "Nom" : "bah",
+    "Password" : "bah.147.elhadj"
+  } ]
+}
