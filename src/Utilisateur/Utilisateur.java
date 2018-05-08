@@ -27,7 +27,7 @@ public class Utilisateur {
     }
 
     public String toString(){
-        return "Utilisateur :\n"+log.toString()+"\n"+pswd.toString()+"\n"+nom.toString()+"\n"+prenom.toString()+"\n"+email.toString();
+        return "Utilisateur :\n"+log.toString()+"\n"+nom.toString()+"\n"+prenom.toString()+"\n"+email.toString();
     }
 
     public Login getLog() {

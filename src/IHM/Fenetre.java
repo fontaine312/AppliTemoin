@@ -12,12 +12,14 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+
 public class Fenetre extends JFrame {
 
     //private Panneau pan = new Panneau();
     private JButton             btnLogin = new JButton("S'identifier");
     final String                path = "C:\\Users\\yvesf\\IdeaProjects\\ProjetFramework\\Image\\logo.png";
-    private ArrayList<JButton>  listDepart;
+    private ArrayList<JButton>  listDepart = new ArrayList<JButton>();
+    private Utilisateur         usrCourant;
     //private CardLayout cardLayout = new CardLayout(0,0);
 
 
@@ -30,26 +32,21 @@ public class Fenetre extends JFrame {
 
     private void initialize() {
 
-        listDepart.add(new JButton("Departement Informatique"));
-        listDepart.add(new JButton("Departement GRH"));
-        listDepart.add(new JButton("Departement Comptabilite"));
-
-
         //Ajout d'un titre
         this.setTitle("Drive Entreprise");
         //Definition de la taille de la fenêtre
         this.setSize(400,500);
 
         //Ajout d'une image
-        BufferedImage myPicture = null;
+        /*BufferedImage myPicture = null;
         try {
             myPicture = ImageIO.read(new File(path));
         } catch (IOException e) {
             e.printStackTrace();
-        }
-        JLabel picLabel = new JLabel(new ImageIcon(myPicture));
-        picLabel.setBounds(300,400,50,50);
-        this.add(picLabel,BorderLayout.SOUTH);
+        }*/
+        /*JLabel picLabel = new JLabel(new ImageIcon(myPicture));
+        picLabel.setBounds(300,400,10,10);
+        this.add(picLabel,BorderLayout.WEST);*/
 
 
         /*ImagePanel img = new ImagePanel();
@@ -74,7 +71,15 @@ public class Fenetre extends JFrame {
             //Si l authentif a marche
             if(logP.isSucceeded()){
                 btnLogin.setVisible(false);
-                Utilisateur usrCourant = logP.getUsrCourant();
+                usrCourant = logP.getUsrCourant();
+
+                listDepart.add(new JButton("Departement Informatique"));
+                listDepart.add(new JButton("Departement GRH"));
+                listDepart.add(new JButton("Departement Comptabilite"));
+
+                listDepart.get(0).addActionListener(new openDepartment(usrCourant,listDepart.get(0).getText()));
+                listDepart.get(1).setEnabled(false);
+                listDepart.get(2).setEnabled(false);
 
 
                 JButton btUsr = new JButton(usrCourant.getLog().getValeur());
@@ -93,6 +98,12 @@ public class Fenetre extends JFrame {
                 bp.add(btUsr);
                 bp.add(lbNomEntrp);
                 bp.add(btExit);
+
+                JPanel departPan = new JPanel();
+                for (JButton b : listDepart){
+                    departPan.add(b);
+                }
+                Fenetre.this.getContentPane().add(departPan,BorderLayout.CENTER);
                 Fenetre.this.getContentPane().add(bp,BorderLayout.PAGE_START);
 
             }
@@ -101,7 +112,7 @@ public class Fenetre extends JFrame {
 
 
 
-    class userInfoListener implements ActionListener{
+    public class userInfoListener implements ActionListener{
         private Utilisateur     usrCourant;
         private JButton         btUsr;
 
@@ -113,12 +124,32 @@ public class Fenetre extends JFrame {
         public void actionPerformed(ActionEvent e) {
             UserInformation userInformation =new UserInformation(usrCourant,btUsr);
             btUsr.setEnabled(false);
-            Fenetre.this.getContentPane().add(userInformation);
+            Fenetre.this.getContentPane().add(userInformation,BorderLayout.SOUTH);
             Fenetre.this.setVisible(true);
             Fenetre.this.repaint();
         }
     }
 
+    private class openDepartment implements ActionListener {
+
+        private Utilisateur     usrCourant;
+        private String          nomDepart;
+
+        openDepartment(Utilisateur usrCourant, String nomDepart) {
+            this.usrCourant=usrCourant;
+            this.nomDepart=nomDepart;
+        }
+
+        /**
+         * Invoked when an action occurs.
+         * @param e the event to be processed
+         */
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Fenetre.this.setVisible(false);
+            DepartementInfo depInf = new DepartementInfo(usrCourant,nomDepart);
+        }
+    }
 }
 
 

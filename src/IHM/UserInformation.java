@@ -135,8 +135,4 @@ public class UserInformation extends JPanel {
         this.repaint();
 
     }
-
-    public boolean isActivated(){
-        return activated;
-    }
 }
